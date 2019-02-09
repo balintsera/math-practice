@@ -5,6 +5,8 @@ class Display {
         this.buttonTemplate = '<button class="button is-primary is-large" data-value="%d">%d</button>&nbsp'
         this.eventName = 'solution'
         this.solutionCb = null
+        this.resultID = 'result'
+        this.result = document.getElementById(this.resultID)
 
         this.addButtonsParent()
         this.updateButtons()
@@ -26,8 +28,16 @@ class Display {
         })
     }
 
+    showSuccess() {
+        this.result.innerText += "🦄"
+    }
+
+    showFail() {
+        this.result.innerText += "🍄"
+    }
+
     updateButtons(max) {
-        let buttons
+        let buttons = ""
         for (let i=1; i<= max; i++) {
             buttons += this.buttonTemplate.replace(/%d/g, i)
         }

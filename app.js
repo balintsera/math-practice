@@ -17,10 +17,9 @@ display.onSolution((value) => {
     // check solution
     if (currentTask === MAX - parseInt(value, 10)) {
         // OK
-        console.log("Congrats 🦄")
+        display.showSuccess()
     } else {
-        console.log("nooo 🍄")
-
+        display.showFail()
     }
 
     // start next
