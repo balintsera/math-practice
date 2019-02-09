@@ -2,7 +2,7 @@ class Display {
     constructor(root) {
         this.root = document.getElementById(root)
         this.buttonsId = 'buttons'
-        this.buttonTemplate = '<button class="button is-primary is-large" data-value="%d">%d</button>&nbsp'
+        this.buttonTemplate = '<button class="button is-primary is-large" data-value="%d">%d</button>'
         this.eventName = 'solution'
         this.solutionCb = null
         this.resultID = 'result'
@@ -29,11 +29,11 @@ class Display {
     }
 
     showSuccess() {
-        this.result.innerText += "🦄"
+        this.result.innerText = "🦄" + this.result.innerText
     }
 
     showFail() {
-        this.result.innerText += "🍄"
+        this.result.innerText = "🍄" + this.result.innerText
     }
 
     updateButtons(max) {
