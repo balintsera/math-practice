@@ -1,7 +1,7 @@
 import Division from './src/Division.js'
 import Display from './src/Display.js'
 
-const MAX = 9
+let MAX = 9
 
 const display = new Display("root")
 const division = new Division(MAX)
@@ -12,9 +12,7 @@ display.next(currentTask, MAX)
 display.updateButtons(MAX)
     // next round
 display.onSolution((value) => {
-    console.log("solution value", value)
     // check solution
-    console.log(division)
     const isSuccess = division.check(parseInt(value, 10))
     if (isSuccess) {
         display.showSuccess()
@@ -23,9 +21,17 @@ display.onSolution((value) => {
     }
 
     // start next
-    currentTask = div.next
+    currentTask = division.next
     display.next(currentTask, MAX)
     display.updateButtons(MAX)
     // next round
 })
+
+const sett = document.getElementById('max')
+sett.addEventListener('change', (event) => {
+    console.log(event.target.value)
+    MAX = event.target.value
+    division.max = MAX
+})
+
 
