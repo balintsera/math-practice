@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    DependsOn: DeployBucket
+    Properties:
+      Bucket: !Ref DeployBucket
+      PolicyDocument:
+        Statement:
+        - Action:
+          - "s3:GetObject"
+          Effect: "Allow"
+          Resource:
+            Fn::Join:
+            - ""
+            - - "arn:aws:s3:::"
+              - !Ref DeployBucket
+              - "/*"
+          Principal: "*"
+
+  DeployBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html # to enable routing
+       

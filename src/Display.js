@@ -12,6 +12,12 @@ class Display {
         this.buttonsParent = document.getElementById(this.buttonsId)
     }
 
+    addEventListener() {
+        this.buttonsParent.addEventListener('click', (payload) => {
+            console.log("click", payload)
+        })
+    }
+
     updateButtons(max) {
         let buttons
         for (let i=1; i<= max; i++) {
