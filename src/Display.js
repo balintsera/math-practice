@@ -45,7 +45,7 @@ class Display {
     }
 
     formatNumber(number, max) {
-        return `${number} + ▲ = ${max}?`
+        return `${number} + ▲ = ${max}`
     }
 
     showText(text) {
