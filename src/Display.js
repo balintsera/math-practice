@@ -2,11 +2,18 @@ class Display {
     constructor(root) {
         this.root = document.getElementById(root)
         this.buttonsId = 'buttons'
+        this.buttonTemplate = '<button class="button is-primary is-large" data-value="%d">%d</button>&nbsp'
+        this.eventName = 'solution'
+        this.solutionCb = null
+
         this.addButtonsParent()
         this.updateButtons()
-        this.buttonTemplate = '<button class="button is-primary is-large">%d</button>&nbsp'
+        this.addEventListener()
     }
 
+    onSolution(callback) {
+        this.solutionCb = callback
+    }
     addButtonsParent() {
         this.root.insertAdjacentHTML('afterend', '<div class="column" id="'+this.buttonsId+'"></div>')
         this.buttonsParent = document.getElementById(this.buttonsId)
@@ -14,14 +21,15 @@ class Display {
 
     addEventListener() {
         this.buttonsParent.addEventListener('click', (payload) => {
-            console.log("click", payload)
+            const value = payload.target.getAttribute('data-value')
+            this.solutionCb(value)
         })
     }
 
     updateButtons(max) {
         let buttons
         for (let i=1; i<= max; i++) {
-            buttons += this.buttonTemplate.replace(/%d/, i)
+            buttons += this.buttonTemplate.replace(/%d/g, i)
         }
         this.buttonsParent.innerHTML = buttons
     }

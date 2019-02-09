@@ -2,15 +2,31 @@ import Division from './src/Division.js'
 import Display from './src/Display.js'
 
 const MAX = 9
+const ROUNDS = 50
 
 const display = new Display("root")
 const div = new Division(MAX)
 
-console.log(div.next)
-for (let i = 0; i < 9; i++) {
-    const next = div.next
-    console.log(next)
-    display.next(next, MAX)
+// first task
+let currentTask = div.next
+display.next(currentTask, MAX)
+display.updateButtons(MAX)
+    // next round
+display.onSolution((value) => {
+    console.log("solution value", value)
+    // check solution
+    if (currentTask === MAX - parseInt(value, 10)) {
+        // OK
+        console.log("Congrats 🦄")
+    } else {
+        console.log("nooo 🍄")
+
+    }
+
+    // start next
+    currentTask = div.next
+    display.next(currentTask, MAX)
     display.updateButtons(MAX)
-}
+    // next round
+})
 
