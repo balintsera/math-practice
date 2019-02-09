@@ -11,5 +11,6 @@ for (let i = 0; i < 9; i++) {
     const next = div.next
     console.log(next)
     display.next(next, MAX)
+    display.updateButtons(MAX)
 }
 
