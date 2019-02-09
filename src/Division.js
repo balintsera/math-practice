@@ -18,7 +18,6 @@ class Division {
     }
 
     check(solution) {
-        console.log("checking", this.current, solution, this._max)
         const result = this.current + solution === this._max
         return result
     }
