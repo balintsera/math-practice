@@ -7,10 +7,15 @@ const display = new Display("root")
 const division = new Division(MAX)
 
 // first task
-let currentTask = division.next
-display.next(currentTask, MAX)
-display.updateButtons(MAX)
-    // next round
+let currentTask
+const next = () => {
+    currentTask = division.next
+    display.next(currentTask, MAX)
+    display.updateButtons(MAX)
+}
+
+next();
+
 display.onSolution((value) => {
     // check solution
     const isSuccess = division.check(parseInt(value, 10))
@@ -20,18 +25,13 @@ display.onSolution((value) => {
         display.showFail()
     }
 
-    // start next
-    currentTask = division.next
-    display.next(currentTask, MAX)
-    display.updateButtons(MAX)
     // next round
+    next()
 })
 
-const sett = document.getElementById('max')
-sett.addEventListener('change', (event) => {
-    console.log(event.target.value)
+const setter = document.getElementById('max')
+setter.addEventListener('change', (event) => {
     MAX = event.target.value
     division.max = MAX
+    next()
 })
-
-

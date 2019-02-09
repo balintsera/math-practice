@@ -1,6 +1,6 @@
 class Division {
     constructor(max) {
-        this.max = max
+        this._max = max
         this.current = null
     }
 
@@ -9,12 +9,18 @@ class Division {
         return this.current
     }
 
+    set max(max) {
+        this._max = parseInt(max, 10)
+    }
+
     getRandomArbitrary() {
-        return Math.random() * (this.max - 0) + 0;
+        return Math.random() * (this._max - 0) + 0;
     }
 
     check(solution) {
-        return this.current + solution === this.max
+        console.log("checking", this.current, solution, this._max)
+        const result = this.current + solution === this._max
+        return result
     }
 }
 
