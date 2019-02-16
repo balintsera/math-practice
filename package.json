@@ -4,7 +4,9 @@
   "description": "`serve .`",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/webpack/bin/webpack.js",
+    "deploy": "./deploy.sh"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/balintsera/math-practice#readme",
   "devDependencies": {
-    "webpack": "^4.29.4"
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3"
   }
 }

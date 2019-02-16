@@ -1,3 +1,3 @@
 #!/bin/sh
 BUCKET=luca-unicorns
-aws s3 cp . s3://$BUCKET --recursive --exclude '.git/*' --exclude 'deploy.sh' --exclude 'cloudformation.yml' --profile default --acl public-read
+aws s3 cp dist s3://$BUCKET --recursive --profile default --acl public-read
