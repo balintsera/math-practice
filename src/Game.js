@@ -11,11 +11,10 @@ class Game {
             const isSuccess = this.division.check(parseInt(value, 10))
             if (isSuccess) {
                 this.display.showSuccess()
+                this.next()
             } else {
                 this.display.showFail()
             }
-        
-            this.next()
         })
         
         this.setter = document.getElementById(setter)
