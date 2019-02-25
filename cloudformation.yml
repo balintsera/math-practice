@@ -21,6 +21,7 @@ Resources:
 
   DeployBucket:
     Type: 'AWS::S3::Bucket'
+    Name: 'luca-unicors.com'
     Properties:
       WebsiteConfiguration:
         IndexDocument: index.html
