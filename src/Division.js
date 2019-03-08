@@ -2,6 +2,7 @@ class Division {
     constructor(max) {
         this._max = max
         this.current = null
+        this.operation = '-'
     }
 
     get next() {
@@ -17,9 +18,23 @@ class Division {
         return Math.random() * (this._max - 0) + 0;
     }
 
-    check(solution) {
-        const result = this.current + solution === this._max
-        return result
+    check(solution, operand) {
+        switch(operand) {
+            case '+':
+                return this.checkAddition(solution)
+            
+            case '-':
+                return this.checkSubtraction(solution)
+        }
+
+    }
+
+    checkAddition(solution) {
+        return this.current + solution === this._max
+    }
+
+    checkSubtraction(solution) {
+      return this._max - this.current === solution
     }
 }
 

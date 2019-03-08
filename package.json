@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/webpack/bin/webpack.js",
+    "build": "ENV=prod node_modules/webpack/bin/webpack.js",
+    "dev": "node_modules/webpack/bin/webpack.js",
     "deploy": "./deploy.sh"
   },
   "repository": {

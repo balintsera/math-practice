@@ -1,10 +1,22 @@
 const path = require('path');
 
-module.exports = {
+const prod = {
+    mode: 'production',
+    entry: './app.js',
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.[contenthash].js'
+    }
+  }
+
+const dev = {
   mode: 'production',
   entry: './app.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[contenthash].js'
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js'
   }
-};
+} 
+
+
+module.exports = process.env.ENV === 'prod' ? prod : dev;

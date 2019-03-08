@@ -44,16 +44,22 @@ class Display {
         this.buttonsParent.innerHTML = buttons
     }
 
-    formatNumber(number, max) {
-        return `${number} + ▲ = ${max}`
+    formatNumber(number, max, operand) {
+        switch(operand) {
+            case '+':
+                return `${number} ${operand} ▲ = ${max}`
+            case '-':
+                return `${max} ${operand} ▲ = ${number}`
+        }
+        
     }
 
     showText(text) {
         this.root.innerText = text
     }
 
-    next(num, max) {
-        this.showText(this.formatNumber(num, max))
+    next(num, max, operand = '-') {
+        this.showText(this.formatNumber(num, max, operand))
     }
 
 }
