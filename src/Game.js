@@ -1,15 +1,16 @@
-import Division from './Division.js'
+import Calculator from './Calculator'
+import Subtraction from './operations/Subtraction'
 import Display from './Display.js'
 
 class Game {
     constructor(root, setter) {
         this.max = 9
         this.display = new Display(root)
-        this.division = new Division(this.max)
+        const subtraction = new Subtraction()
+        this.calculator = new Calculator(subtraction)
         this.currentTask = null
-        this.operand = '-'
         this.display.onSolution((value) => {
-            const isSuccess = this.division.check(parseInt(value, 10), this.operand)
+            const isSuccess = this.calculator.check(parseInt(value, 10))
             if (isSuccess) {
                 this.display.showSuccess()
                 this.next()
@@ -21,14 +22,14 @@ class Game {
         this.setter = document.getElementById(setter)
         this.setter.addEventListener('change', (event) => {
             this.max = event.target.value
-            this.division.max = this.max
+            this.calculator.max = this.max
             this.next()
         })
     }
 
     next() {
-        this.currentTask = this.division.next
-        this.display.next(this.currentTask, this.max, this.operand)
+        this.currentTask = this.calculator.next
+        this.display.next(this.currentTask, this.max, this.calculator.operator)
         this.display.updateButtons(this.max)
     }
 
