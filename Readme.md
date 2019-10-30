@@ -1,5 +1,7 @@
 # Run
 
+cd into dist and run: 
+
 `serve .`
 
 

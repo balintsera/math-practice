@@ -36,10 +36,10 @@ class Display {
         this.result.innerText = "🍄" + this.result.innerText
     }
 
-    updateButtons(max) {
+    updateButtons(values = []) {
         let buttons = ""
-        for (let i=1; i<= max; i++) {
-            buttons += this.buttonTemplate.replace(/%d/g, i)
+        for (let value of values) {
+            buttons += this.buttonTemplate.replace(/%d/g, value)
         }
         this.buttonsParent.innerHTML = buttons
     }
@@ -50,6 +50,8 @@ class Display {
                 return `${number} ${operand} ▲ = ${max}`
             case '-':
                 return `${max} ${operand} ▲ = ${number}`
+            case '*':
+                return `${number} ${operand} ${max} = ▲` 
         }
         
     }
