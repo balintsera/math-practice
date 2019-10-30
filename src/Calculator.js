@@ -1,5 +1,5 @@
 export default class Calculator {
-    constructor(operation) {
+    constructor(operation, max) {
         this.operation = operation
         this._max = max
         this.current = null
@@ -20,7 +20,6 @@ export default class Calculator {
 
     // Bridged
     check(value) {
-        console.log("checking solution %d", value)
         return this.operation.check(value, this.current, this._max)
     }
 

@@ -7,7 +7,7 @@ class Game {
         this.max = 9
         this.display = new Display(root)
         const subtraction = new Subtraction()
-        this.calculator = new Calculator(subtraction)
+        this.calculator = new Calculator(subtraction, this.max)
         this.currentTask = null
         this.display.onSolution((value) => {
             const isSuccess = this.calculator.check(parseInt(value, 10))
