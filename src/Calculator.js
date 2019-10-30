@@ -20,7 +20,8 @@ export default class Calculator {
 
     // Bridged
     check(value) {
-        return this.operation.check(value)
+        console.log("checking solution %d", value)
+        return this.operation.check(value, this.current, this._max)
     }
 
     get operator() {
