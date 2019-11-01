@@ -6,7 +6,7 @@ export default class Calculator {
     }
 
     get next() {
-        this.current = Math.floor(this.getRandomArbitrary())
+        this.current = this.operation.next(this._max)
         return this.current
     }
 
@@ -14,9 +14,6 @@ export default class Calculator {
         this._max = parseInt(max, 10)
     }
 
-    getRandomArbitrary() {
-        return Math.random() * (this._max - 0) + 0;
-    }
 
     // Bridged
     check(value) {
@@ -25,6 +22,10 @@ export default class Calculator {
 
     get operator() {
         return this.operation.operator
+    }
+
+    get availableSolutions() { 
+        return this.operation.solutions(this._max);
     }
 
 }

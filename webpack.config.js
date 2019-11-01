@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const prod = {
     mode: 'production',
@@ -23,6 +24,7 @@ const dev = {
 
 const common = {
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       {
 //Wildcard is specified hence will copy only css files
@@ -37,7 +39,7 @@ const common = {
         inject: true,
         minify: {
             removeComments: true,
-            collapseWhitespace: false
+            collapseWhitespace: true
         }
     })
   ]

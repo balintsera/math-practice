@@ -7,4 +7,11 @@ export default class Addition {
         return current + solution === max
     }
 
+    next(max) {
+        return Math.floor(this.getRandomArbitrary(max))
+    }
+
+    getRandomArbitrary(max) {
+        return Math.random() * (max - 0) + 0;
+    }
 }
